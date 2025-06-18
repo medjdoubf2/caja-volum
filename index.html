@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Volumen de Caja</title>
+    <style>
+        body {
+            background: url(./caja.jpeg) no-repeat;
+            font-family:'Times New Roman', Times, serif;
+            color: rgb(43, 99, 231);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: url(./fondo.jpg) no-repeat;
+            text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(14, 46, 206, 0.5);
+        }
+        input {
+            margin: 10px 0;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            width: 80%;
+        }
+        button {
+            padding: 10px 20px;
+            border:#e619d2;
+            border-radius: 5px;
+            background-color: rgb(43, 99, 231);
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #e61949;
+        }
+        .resultado {
+            margin-top: 20px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Calculadora de Volumen de Caja</h1>
+        <input type="number" id="ancho" placeholder="Ancho (cm)" required>
+        <input type="number" id="largo" placeholder="Largo (cm)" required>
+        <input type="number" id="alto" placeholder="Alto (cm)" required>
+        <button onclick="calcularVolumen()">Calcular Volumen</button>
+        <div class="resultado" id="resultado"></div>
+    </div>
+
+    <script>
+        function obtenerVolumen(medidas) {
+            return medidas.ancho * medidas.largo * medidas.alto;
+        }
+
+        function calcularVolumen() {
+            const ancho = parseFloat(document.getElementById('ancho').value);
+            const largo = parseFloat(document.getElementById('largo').value);
+            const alto = parseFloat(document.getElementById('alto').value);
+            
+            const caja = { ancho, largo, alto };
+            const volumen = obtenerVolumen(caja);
+            document.getElementById('resultado').innerText = `El volumen de la caja es: ${volumen} cm³`;
+        }
+    </script>
+</body>
+</html>
